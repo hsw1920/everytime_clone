@@ -93,6 +93,7 @@ final class LoginViewController: UIViewController {
         return stackView
     }()
     
+    private var centerYConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,10 +110,12 @@ final class LoginViewController: UIViewController {
         self.container.setCustomSpacing(10, after: self.titleImageView)
         self.container.setCustomSpacing(46, after: self.titleLabel)
         self.container.setCustomSpacing(30, after: self.loginButton)
+        let constraint =  self.container.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        
         NSLayoutConstraint.activate([
             self.container.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -50),
             self.container.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50),
-            self.container.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            constraint,
             self.titleImageView.heightAnchor.constraint(equalToConstant: 60),
             self.titleImageView.widthAnchor.constraint(equalToConstant: 60),
             self.idTextField.heightAnchor.constraint(equalToConstant: 40),
@@ -128,8 +131,68 @@ final class LoginViewController: UIViewController {
             self.loginButton.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
             self.loginButton.trailingAnchor.constraint(equalTo: self.container.trailingAnchor)
         ])
+        self.centerYConstraint = constraint
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewDidTap))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
-  
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self,name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self,name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func viewDidTap(gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(notification: Notification){
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as?
+                CGRect,
+              let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as?
+                Double else{
+            return
+        }
+        let keyboardHeight = keyboardFrame.height
+        
+        UIView.animate(withDuration: duration) {
+//            [self.titleImageView,self.descriptionLabel,self.titleLabel,self.signupButton].forEach {
+//                view in view.alpha = 0
+//            }
+            self.titleImageView.alpha = 0
+            self.descriptionLabel.alpha = 0
+            self.titleLabel.alpha = 0
+            self.signupButton.alpha = 0
+            
+            self.centerYConstraint?.constant = -keyboardHeight
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc func keyboardWillHide(notification: Notification){
+        guard let userInfo = notification.userInfo,
+              let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as?
+                Double else{
+            return
+        }
+        UIView.animate(withDuration: duration) {
+            [self.titleImageView,self.descriptionLabel,self.titleLabel,self.signupButton].forEach {
+                view in view.alpha = 1
+            }
+            self.centerYConstraint?.constant = 0
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    
+    
 }
