@@ -18,6 +18,10 @@
 		065D797A26E3A5450066F8D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065D797926E3A5450066F8D4 /* LoginViewController.swift */; };
 		065D797C26E3A56A0066F8D4 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065D797B26E3A56A0066F8D4 /* UIColor+Extension.swift */; };
 		065D797E26E3A5850066F8D4 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065D797D26E3A5850066F8D4 /* InsetTextField.swift */; };
+		60081839287140AB003DFDDC /* ReactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60081838287140AB003DFDDC /* ReactionView.swift */; };
+		6008183B2871451C003DFDDC /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6008183A2871451C003DFDDC /* NavigationTitleView.swift */; };
+		6064A3F32870142000080075 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6064A3F22870142000080075 /* MainViewController.swift */; };
+		6064A3F52870166400080075 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6064A3F42870166400080075 /* MainCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		065D797926E3A5450066F8D4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		065D797B26E3A56A0066F8D4 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		065D797D26E3A5850066F8D4 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
+		60081838287140AB003DFDDC /* ReactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionView.swift; sourceTree = "<group>"; };
+		6008183A2871451C003DFDDC /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
+		6064A3F22870142000080075 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6064A3F42870166400080075 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +123,10 @@
 				065D797926E3A5450066F8D4 /* LoginViewController.swift */,
 				065D797B26E3A56A0066F8D4 /* UIColor+Extension.swift */,
 				065D797D26E3A5850066F8D4 /* InsetTextField.swift */,
+				6064A3F22870142000080075 /* MainViewController.swift */,
+				6064A3F42870166400080075 /* MainCell.swift */,
+				60081838287140AB003DFDDC /* ReactionView.swift */,
+				6008183A2871451C003DFDDC /* NavigationTitleView.swift */,
 			);
 			path = enurytime;
 			sourceTree = "<group>";
@@ -267,11 +279,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6064A3F32870142000080075 /* MainViewController.swift in Sources */,
+				60081839287140AB003DFDDC /* ReactionView.swift in Sources */,
 				065D797A26E3A5450066F8D4 /* LoginViewController.swift in Sources */,
 				065D794E26E3A4B30066F8D4 /* ViewController.swift in Sources */,
 				065D794A26E3A4B30066F8D4 /* AppDelegate.swift in Sources */,
 				065D794C26E3A4B30066F8D4 /* SceneDelegate.swift in Sources */,
 				065D797E26E3A5850066F8D4 /* InsetTextField.swift in Sources */,
+				6008183B2871451C003DFDDC /* NavigationTitleView.swift in Sources */,
+				6064A3F52870166400080075 /* MainCell.swift in Sources */,
 				065D797C26E3A56A0066F8D4 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,7 +471,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sesang06.enurytime;
+				PRODUCT_BUNDLE_IDENTIFIER = seuhong.enurytime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -474,7 +490,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sesang06.enurytime;
+				PRODUCT_BUNDLE_IDENTIFIER = seuhong.enurytime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
